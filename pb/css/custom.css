@@ -68,7 +68,13 @@ h1,h2,h3,h4,h5,h6{ color:var(--pb-brand); }
 #home .personal-box h3{ color:var(--pb-accent-2) !important; font-size:22px; min-height:34px; margin-top:.5rem; }
 
 /* hero copy sits in the clear left third of the photograph */
-.pb-hero-inner{ text-align:center; max-width:1140px; margin:0 auto; padding:0 15px; }
+/* .center-col is absolutely positioned with left:0, so auto margins alone
+   will not centre it — left/right must both be pinned. */
+.pb-hero-inner{
+  text-align:center; max-width:1140px; padding:0 15px;
+  left:0 !important; right:0 !important;
+  margin-left:auto !important; margin-right:auto !important;
+}
 @media(min-width:992px){
   .pb-hero-inner{ text-align:left; }
   .pb-hero-inner .personal-box{ max-width:600px; }
