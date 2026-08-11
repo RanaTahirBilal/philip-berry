@@ -71,9 +71,11 @@ h1,h2,h3,h4,h5,h6{ color:var(--pb-brand); }
 /* .center-col is absolutely positioned with left:0, so auto margins alone
    will not centre it — left/right must both be pinned. */
 .pb-hero-inner{
-  text-align:center; max-width:1140px; padding:0 15px;
+  text-align:center;
   left:0 !important; right:0 !important;
-  margin-left:auto !important; margin-right:auto !important;
+  max-width:none !important; width:auto !important;
+  padding-left:max(15px, calc(50% - 570px));
+  padding-right:max(15px, calc(50% - 570px));
 }
 @media(min-width:992px){
   .pb-hero-inner{ text-align:left; }
