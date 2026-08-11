@@ -1,0 +1,208 @@
+/* ============================================================
+   Philip Berry Associates — custom palette and layout overrides
+   Built on MegaOne "Personal Profile" demo.
+   Brand: deep teal + brass.  Template accent (#dc3545) retired.
+   ============================================================ */
+
+:root{
+  --pb-brand:#0E3B3E;      /* deep teal   */
+  --pb-brand-2:#14504F;    /* teal hover  */
+  --pb-accent:#B8873B;     /* brass       */
+  --pb-accent-2:#CFA157;   /* brass light */
+  --pb-ink:#141B1C;        /* body text   */
+  --pb-soft:#F4F2ED;       /* warm paper  */
+  --pb-line:rgba(14,59,62,.12);
+}
+
+/* ---------- retire the template's red accent ---------- */
+.color-summer-sky{ color:var(--pb-accent) !important; }
+.bg-summer-sky{ background-color:var(--pb-brand) !important; }
+.btn-summer-sky{ border-color:var(--pb-brand) !important; background-color:var(--pb-brand) !important; color:#fff !important; }
+.btn-summer-sky:hover,.btn-summer-sky:focus{ border-color:var(--pb-accent) !important; background-color:var(--pb-accent) !important; }
+.btn-hvr-summer-sky .btn-hvr-effect{ background-color:var(--pb-accent) !important; }
+.bg-light-gray{ background-color:var(--pb-soft) !important; }
+.progress-bar.bg-summer-sky{ background-color:var(--pb-accent) !important; }
+
+body{ color:var(--pb-ink); }
+h1,h2,h3,h4,h5,h6{ color:var(--pb-brand); }
+.main-title h5{ color:var(--pb-accent) !important; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+.main-title h2{ color:var(--pb-brand) !important; }
+.color-black{ color:var(--pb-brand) !important; }
+
+/* ---------- header / monogram ---------- */
+.pb-mark{
+  font-family:'Montserrat',sans-serif; font-weight:700; font-size:26px;
+  letter-spacing:.18em; text-indent:.18em; color:var(--pb-brand);
+  line-height:1; display:inline-block; text-decoration:none;
+}
+.pb-mark span{ color:var(--pb-accent); }
+.pb-mark small{
+  display:block; font-size:9px; letter-spacing:.30em; text-indent:.30em;
+  font-weight:600; color:rgba(20,27,28,.55); margin-top:6px; text-transform:uppercase;
+}
+.navbar-top-default .nav-link{ text-transform:capitalize; font-weight:500; }
+.navbar-top-default .nav-link:hover{ color:var(--pb-accent) !important; }
+.nav-radius .navbar-nav .nav-item .nav-link.active,
+.nav-radius .navbar-nav .nav-item .nav-link.active:hover{
+  background:var(--pb-brand) !important; color:#fff !important;
+}
+.fixed-menu.navbar-top-default .navbar-nav .nav-link:hover{ color:var(--pb-accent) !important; }
+.main-title p{ margin-bottom:1rem; }
+.main-title p:last-child{ margin-bottom:0; }
+
+/* hamburger: strip the browser default button chrome */
+#sidemenu_toggle{ -webkit-appearance:none; appearance:none; background:transparent !important; border:0 !important; }
+#sidemenu_toggle .menu-lines span{ background-color:var(--pb-brand) !important; height:2px; }
+#sidemenu_toggle:hover .menu-lines span{ background-color:var(--pb-accent) !important; }
+.side-menu{ background:var(--pb-brand) !important; }
+.side-menu .nav-link{ color:#fff !important; }
+.side-menu .nav-link:hover,.side-menu .nav-link.active{ color:var(--pb-accent-2) !important; }
+
+/* ---------- hero ---------- */
+.bg-img-1{ background:url("../img/hero.jpg") no-repeat center center !important; background-size:cover !important; }
+#home .bg-overlay.bg-gradient{
+  background:linear-gradient(100deg, rgba(8,32,34,.93) 0%, rgba(8,32,34,.80) 34%, rgba(10,40,42,.42) 66%, rgba(14,59,62,.14) 100%) !important;
+}
+#home .not-fullscreen{ padding:200px 0 150px; }
+#home .personal-box h1{ font-size:3rem; margin-top:26px; }
+#home .personal-box h3{ color:var(--pb-accent-2) !important; font-size:22px; min-height:34px; margin-top:.5rem; }
+
+/* hero copy sits in the clear left third of the photograph */
+.pb-hero-inner{ text-align:center; max-width:1140px; margin:0 auto; padding:0 15px; }
+@media(min-width:992px){
+  .pb-hero-inner{ text-align:left; }
+  .pb-hero-inner .personal-box{ max-width:600px; }
+  .pb-hero-inner .pb-hero-strap{ margin-left:0; }
+}
+/* the client's only real photograph is a tight magazine crop with no headroom,
+   so it is presented as a portrait card rather than a circle */
+.myphoto{
+  border-radius:4px !important; width:168px !important; height:222px !important;
+  border:3px solid rgba(255,255,255,.32); box-shadow:0 18px 44px rgba(0,0,0,.42);
+}
+.myphoto:before{ display:none !important; content:none !important; }
+.myphoto img{ width:100%; height:100%; object-fit:cover; object-position:center top; }
+.pb-contact-photo .myphoto{
+  width:230px !important; height:304px !important;
+  border:1px solid var(--pb-line); box-shadow:0 16px 40px rgba(14,59,62,.16);
+}
+.pb-hero-strap{
+  color:rgba(255,255,255,.86); max-width:660px; margin:20px auto 0;
+  font-size:17px; line-height:1.8;
+}
+.pb-hero-cta{ margin-top:34px; }
+.pb-hero-cta a{ margin:0 8px 10px; }
+
+/* ---------- generic card ---------- */
+.pb-card{
+  background:#fff; border:1px solid var(--pb-line); border-top:3px solid var(--pb-accent);
+  padding:34px 30px; height:100%; transition:.3s ease;
+}
+.pb-card:hover{ box-shadow:0 16px 40px rgba(14,59,62,.13); transform:translateY(-4px); }
+.pb-card i{ font-size:34px; color:var(--pb-accent); display:block; margin-bottom:16px; }
+.pb-card h4{ font-size:19px; margin-bottom:12px; color:var(--pb-brand); }
+.pb-card p{ font-size:15px; line-height:1.8; margin-bottom:0; color:#4a5556; }
+
+/* ---------- stats ---------- */
+.stats .serial-box i{ color:var(--pb-accent) !important; }
+.stats .serial-box p{ color:var(--pb-brand) !important; font-weight:600; }
+
+/* ---------- credentials list (replaces the demo progress bars) ---------- */
+.pb-cred{ list-style:none; padding:0; margin:0; }
+.pb-cred li{
+  position:relative; padding:0 0 18px 30px; margin-bottom:18px;
+  border-bottom:1px solid var(--pb-line);
+}
+.pb-cred li:last-child{ border-bottom:0; margin-bottom:0; padding-bottom:0; }
+.pb-cred li::before{
+  content:""; position:absolute; left:0; top:9px; width:9px; height:9px;
+  background:var(--pb-accent); border-radius:50%;
+}
+.pb-cred strong{ display:block; color:var(--pb-brand); font-size:16px; margin-bottom:3px; }
+.pb-cred span{ font-size:14.5px; color:#5a6465; }
+
+/* ---------- quote band ---------- */
+.pb-quote{ background:var(--pb-brand); padding:82px 0; }
+.pb-quote blockquote{
+  color:#fff; font-size:26px; line-height:1.65; font-weight:300;
+  max-width:900px; margin:0 auto; text-align:center; border:0;
+}
+.pb-quote .pb-attrib{ color:var(--pb-accent-2); letter-spacing:.16em; text-transform:uppercase; font-size:12.5px; margin-top:22px; }
+
+/* ---------- client roster ---------- */
+.pb-roster{ list-style:none; padding:0; margin:0; column-gap:34px; }
+.pb-roster li{
+  break-inside:avoid; padding:9px 0 9px 20px; position:relative;
+  font-size:15px; color:#3f4a4b; border-bottom:1px solid var(--pb-line);
+}
+.pb-roster li::before{ content:""; position:absolute; left:0; top:17px; width:7px; height:1px; background:var(--pb-accent); }
+@media(min-width:768px){ .pb-roster{ column-count:2; } }
+@media(min-width:992px){ .pb-roster{ column-count:3; } }
+
+/* ---------- publications ---------- */
+.pb-pub{
+  background:#fff; border:1px solid var(--pb-line); border-left:3px solid var(--pb-accent);
+  padding:26px 28px; margin-bottom:22px; transition:.3s ease;
+}
+.pb-pub:hover{ box-shadow:0 12px 32px rgba(14,59,62,.11); }
+.pb-pub h4{ font-size:17.5px; line-height:1.55; margin-bottom:10px; color:var(--pb-brand); }
+.pb-pub p{ margin:0; font-size:13.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--pb-accent); font-weight:600; }
+
+/* ---------- book band ---------- */
+.pb-book{ background:var(--pb-soft); }
+.pb-book .pb-book-img img{ width:100%; box-shadow:0 22px 50px rgba(14,59,62,.20); }
+
+/* ---------- gallery / practice images ---------- */
+.pb-shot{ position:relative; overflow:hidden; margin-bottom:30px; }
+.pb-shot img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+.pb-shot:hover img{ transform:scale(1.05); }
+.pb-shot figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:22px 24px;
+  background:linear-gradient(to top, rgba(8,32,34,.90), rgba(8,32,34,0));
+  color:#fff; font-size:15px; letter-spacing:.04em;
+}
+
+/* ---------- parallax band ---------- */
+.parallax1{
+  background:url("../img/parallax.jpg") no-repeat center center !important;
+  background-size:cover !important; position:relative;
+}
+.parallax1::before{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(8,32,34,.86) 0%, rgba(8,32,34,.72) 100%);
+}
+.parallax1 .container{ position:relative; z-index:2; }
+.parallax1 h2{ color:#fff !important; }
+.parallax1 .color-summer-sky{ color:var(--pb-accent-2) !important; letter-spacing:.14em; text-transform:uppercase; font-size:13px; }
+
+/* ---------- equal-height card rows ---------- */
+#practice .row > [class*="col-"], #career .row > [class*="col-"]{ display:flex; }
+#practice .pb-card, #career .pb-card{ display:flex; flex-direction:column; width:100%; }
+
+/* ---------- contact ---------- */
+.contact-box-shadow{ background:#fff; border:1px solid var(--pb-line); box-shadow:0 14px 36px rgba(14,59,62,.08); }
+.contact-info .icon-box i{ color:var(--pb-accent) !important; }
+.contact-info .icon-box a:hover{ color:var(--pb-brand) !important; }
+.pb-contact-photo img{ width:100%; display:block; }
+
+/* ---------- footer ---------- */
+footer.bg-white{ background:var(--pb-brand) !important; }
+footer .copyrights,footer .copyrights a{ color:rgba(255,255,255,.66) !important; }
+footer .footer-icons li a{ color:#fff !important; border-color:rgba(255,255,255,.3) !important; }
+footer .footer-icons li a:hover{ background:var(--pb-accent) !important; border-color:var(--pb-accent) !important; }
+
+/* ---------- go-top: keep it out of normal flow (no trailing gap) ---------- */
+.go-top{ position:fixed !important; right:26px; bottom:26px; z-index:30; margin:0 !important; }
+#contact{ margin-bottom:0 !important; }
+
+/* ---------- responsive ---------- */
+@media(max-width:991px){
+  #home .not-fullscreen{ padding:150px 0 110px; }
+  .pb-quote blockquote{ font-size:21px; }
+}
+@media(max-width:575px){
+  .pb-mark{ font-size:21px; }
+  #home .personal-box h2{ font-size:30px; }
+  .pb-quote blockquote{ font-size:18.5px; }
+  .pb-card{ padding:28px 24px; }
+}
