@@ -306,6 +306,17 @@ a{ transition:color .28s var(--pb-ease); }
 .pb-video h4{ font-size:16px; margin:20px 0 6px; line-height:1.5; }
 .pb-video p{ font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--pb-accent); font-weight:600; margin:0; }
 
+/* credential card with no destination behind it: same shape as the link card
+   but no hover lift and no "go" affordance, so it never looks clickable */
+.pb-fact-card{
+  height:100%; background:#fff;
+  border:1px solid var(--pb-line); border-left:3px solid var(--pb-accent);
+  padding:28px 26px;
+}
+.pb-fact-card i{ font-size:26px; color:var(--pb-accent); display:block; margin-bottom:14px; }
+.pb-fact-card h4{ font-size:16px; line-height:1.5; margin-bottom:10px; }
+.pb-fact-card p{ font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:var(--pb-body); margin:0; }
+
 .pb-link-card{
   display:block; height:100%; background:#fff; text-decoration:none;
   border:1px solid var(--pb-line); border-left:3px solid var(--pb-accent);
@@ -462,10 +473,11 @@ footer .copyrights{ color:rgba(255,255,255,.62) !important; font-size:13px; line
   .main-title h5{ font-size:11.5px; }
   /* the template centres text at this breakpoint, which strands the bullets
      and rules on the left of every list. Components stay left aligned. */
-  .pb-card, .pb-link-card, .pb-pub, .pb-roster, .pb-roster li,
+  .pb-card, .pb-link-card, .pb-fact-card, .pb-pub, .pb-roster, .pb-roster li,
   .pb-cred, .pb-cred li, .pb-contact-list{ text-align:left; }
   .pb-card{ padding:26px 22px; }
-  .pb-card i, .pb-link-card i{ margin-left:0; }
+  .pb-card i, .pb-link-card i, .pb-fact-card i{ margin-left:0; }
+  .pb-fact-card{ padding:24px 20px; }
   .pb-btn{
     padding:14px 22px; font-size:11.5px; margin:0 auto 10px;
     display:block; max-width:290px; text-align:center;
