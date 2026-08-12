@@ -16,7 +16,8 @@
   --pb-ease:cubic-bezier(.22,.61,.36,1);
 }
 
-html{ scroll-behavior:smooth; }
+/* the template already animates nav clicks with jQuery, so CSS smooth scroll
+   is left off to avoid the two fighting each other */
 
 /* ---------- retire the template's red accent ---------- */
 .color-summer-sky{ color:var(--pb-accent) !important; }
@@ -51,10 +52,26 @@ a{ transition:color .28s var(--pb-ease); }
 .navbar-top-default{ transition:background .4s var(--pb-ease), box-shadow .4s var(--pb-ease); }
 .box-nav .container{ transition:height .35s var(--pb-ease), background .35s var(--pb-ease); }
 
+/* Sticky state: the template collapses the nav container to height 0 and makes
+   it transparent, which drops the links onto the page content and wraps the
+   wordmark. Restore a solid bar instead. */
+.navbar-top-default.fixed-menu{
+  background:#fff !important;
+  box-shadow:0 4px 24px rgba(14,59,62,.12);
+}
+.box-nav.fixed-menu .container{
+  height:auto !important; background:transparent !important;
+  padding-top:12px; padding-bottom:12px; box-shadow:none !important;
+}
+.navbar-top-default.fixed-menu .navbar-nav .nav-link{ color:var(--pb-ink) !important; }
+.navbar-top-default.fixed-menu .navbar-nav .nav-link.active{ color:#fff !important; }
+.fixed-menu .pb-logo-name{ color:var(--pb-brand) !important; }
+
 .pb-logo{
   display:inline-flex; align-items:center; text-decoration:none;
-  padding:0; line-height:1;
+  padding:0; line-height:1; white-space:nowrap; flex:0 0 auto;
 }
+.pb-logo span{ white-space:nowrap; }
 .pb-logo-name{
   font-size:20px; font-weight:600; letter-spacing:.02em;
   color:var(--pb-brand); white-space:nowrap;
