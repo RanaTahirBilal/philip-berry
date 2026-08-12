@@ -379,15 +379,27 @@ a{ transition:color .28s var(--pb-ease); }
 .pb-contact-list a:hover{ color:var(--pb-brand); }
 .pb-contact-actions{ margin-top:6px; }
 
+.pb-form{ margin-top:8px; }
+.pb-label{
+  display:block; font-size:11px; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--pb-brand); margin-bottom:7px;
+}
 .pb-form input, .pb-form textarea{
-  width:100%; margin-bottom:18px; padding:14px 16px;
-  border:1px solid var(--pb-line); background:#fff; font-size:15px;
+  width:100%; margin-bottom:18px; padding:13px 15px;
+  border:1px solid var(--pb-line); border-radius:2px; background:#fff;
+  font-family:'Montserrat',sans-serif; font-size:15px; color:var(--pb-ink);
   transition:border-color .3s var(--pb-ease), box-shadow .3s var(--pb-ease);
 }
-.pb-form textarea{ min-height:140px; resize:vertical; }
+.pb-form input::placeholder, .pb-form textarea::placeholder{ color:#9aa4a5; }
+.pb-form textarea{ min-height:132px; resize:vertical; }
 .pb-form input:focus, .pb-form textarea:focus{
   outline:none; border-color:var(--pb-accent);
-  box-shadow:0 0 0 3px rgba(184,135,59,.14);
+  box-shadow:0 0 0 3px rgba(184,135,59,.15);
+}
+.pb-form input:invalid:not(:placeholder-shown){ border-color:#c2603f; }
+.pb-form .pb-btn{ margin-top:4px; }
+.pb-contact-actions{
+  margin-top:26px; padding-top:22px; border-top:1px solid var(--pb-line);
 }
 
 /* ---------- social ---------- */
