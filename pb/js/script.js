@@ -92,14 +92,7 @@ jQuery(function ($) {
        ======================================== */
 
     if ($(window).width() > 767) {
-        var wow = new WOW({
-            boxClass: 'wow',
-            animateClass: 'animated',
-            offset: 0,
-            mobile: false,
-            live: true
-        });
-        new WOW().init();
+    // WOW.js retired: motion is handled by pb/js/reveal.js
     }
 
     /* ----- Full Screen ----- */
@@ -243,7 +236,7 @@ jQuery(function ($) {
        ====================================== */
 
     /* Testimonial */
-    $('.testimonial-two').owlCarousel({
+    if ($.fn.owlCarousel) $('.testimonial-two').owlCarousel({
         loop: true,
         smartSpeed: 500,
         responsiveClass: true,
@@ -270,7 +263,7 @@ jQuery(function ($) {
     });
 
     /* Brand Carousel */
-    $('.brand-carousel').owlCarousel({
+    if ($.fn.owlCarousel) $('.brand-carousel').owlCarousel({
         margin: 75,
         nav: false,
         navText: [
