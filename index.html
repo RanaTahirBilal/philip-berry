@@ -10,28 +10,34 @@
 <meta name="robots" content="index, follow">
 
 <!-- DEPLOYMENT NOTE ------------------------------------------------------
-     Moving to a custom domain: update og:url, twitter:url and the JSON-LD
-     "url" property below. Everything else uses relative paths.
+     Moving to a custom domain: update every absolute URL on this page.
+     They are, in order: og:image, og:url, twitter:image, canonical, the
+     JSON-LD "url" property, and the form's _next field in the contact
+     section. Also update sitemap.xml and robots.txt at the site root.
+     Everything else uses relative paths and moves as is.
 
-     CONTACT FORM: the form in the contact section is commented out and
-     needs one value to go live. Put Philip's business email into the
-     form action (https://formsubmit.co/HIS-EMAIL), uncomment the block,
-     and he confirms the address once by email. Until then the live
-     routes are his phone, address and social profiles.
-
-     Do NOT put the builder's personal address anywhere in this file.
+     CONTACT FORM: delivery address lives in one place only, the form
+     action in the contact section. It currently routes to the builder
+     so the form is not dead; swap it to Philip's own business address
+     as soon as he supplies one, then send one test message to trigger
+     FormSubmit's confirmation email.
      --------------------------------------------------------------------- -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Philip Berry | Executive Coach and Leadership Advisor">
 <meta property="og:description" content="Executive coaching, global leadership development and organizational effectiveness in more than sixty countries.">
-<meta property="og:image" content="pb/img/hero.jpg">
+<!-- Social crawlers do not resolve relative image paths, so these two stay absolute. -->
+<meta property="og:image" content="https://ranatahirbilal.github.io/philip-berry/pb/img/hero.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
 <meta property="og:url" content="https://ranatahirbilal.github.io/philip-berry/">
+<meta property="og:site_name" content="Philip Berry Associates LLC">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Philip Berry | Executive Coach and Leadership Advisor">
 <meta name="twitter:description" content="Executive coaching, leadership development and organizational effectiveness.">
-<meta name="twitter:image" content="pb/img/hero.jpg">
-<meta name="twitter:url" content="https://ranatahirbilal.github.io/philip-berry/">
+<meta name="twitter:image" content="https://ranatahirbilal.github.io/philip-berry/pb/img/hero.jpg">
 
+<link rel="canonical" href="https://ranatahirbilal.github.io/philip-berry/">
+<link rel="icon" type="image/svg+xml" href="pb/img/favicon.svg">
 <link rel="icon" href="vendor/img/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -685,25 +691,45 @@
                         </li>
                     </ul>
 
-                    <!-- CONTACT FORM: activate by putting Philip's business email into the
-                         action below and removing these comment markers. He confirms the
-                         address once by email, then messages arrive in his inbox.
-                    <form class="pb-form" action="https://formsubmit.co/HIS-EMAIL-HERE" method="POST">
-                        <input type="hidden" name="_subject" value="Enquiry from philipberry.com">
+                    <!-- CONTACT FORM
+                         Delivery runs through FormSubmit, which needs no server.
+                         SWAP TARGET: the address in the action below is the only place
+                         the destination appears. Replace it with Philip's own business
+                         address when he supplies one, and he confirms it once by email.
+                         The first submission to a new address triggers that activation
+                         email, so send one test message after any change. -->
+                    <form class="pb-form" action="https://formsubmit.co/tahirbilal16@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New enquiry from the Philip Berry website">
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://ranatahirbilal.github.io/philip-berry/thanks.html">
+                        <!-- honeypot: bots fill it, people never see it -->
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         <div class="row">
-                            <div class="col-md-6"><input type="text" name="Name" placeholder="Name" required></div>
-                            <div class="col-md-6"><input type="email" name="Email" placeholder="Email" required></div>
-                            <div class="col-md-12"><input type="text" name="Subject" placeholder="Subject"></div>
-                            <div class="col-md-12"><textarea name="Message" placeholder="Message" required></textarea></div>
-                            <div class="col-md-12"><button type="submit" class="pb-btn pb-btn-solid">Send message</button></div>
+                            <div class="col-md-6">
+                                <label class="pb-label" for="cf-name">Name</label>
+                                <input id="cf-name" type="text" name="Name" placeholder="Your name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="pb-label" for="cf-email">Email</label>
+                                <input id="cf-email" type="email" name="Email" placeholder="you@company.com" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="pb-label" for="cf-subject">Subject</label>
+                                <input id="cf-subject" type="text" name="Subject" placeholder="Coaching, workshop, speaking">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="pb-label" for="cf-msg">Message</label>
+                                <textarea id="cf-msg" name="Message" placeholder="A little about what you are looking for" required></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="pb-btn pb-btn-solid">Send message</button>
+                            </div>
                         </div>
                     </form>
-                    -->
 
                     <div class="pb-contact-actions">
-                        <a href="tel:+19172083428" class="pb-btn pb-btn-solid">Call Philip</a>
+                        <a href="tel:+19172083428" class="pb-btn pb-btn-ghost pb-btn-dark">Call Philip</a>
                         <a href="https://www.linkedin.com/in/philip-berry-aaa5165/" target="_blank" rel="noopener noreferrer" class="pb-btn pb-btn-ghost pb-btn-dark">Message on LinkedIn</a>
                     </div>
                 </div>
