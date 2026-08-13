@@ -52,24 +52,28 @@
     window.addEventListener('load', sweep);
     setTimeout(sweep, 1200);
 
-    // Client wall filter.
-    var filters = [].slice.call(document.querySelectorAll('.pb-filter'));
-    var wallItems = [].slice.call(document.querySelectorAll('.pb-logo-item'));
-    if (filters.length && wallItems.length) {
-        filters.forEach(function (btn) {
+    // Client index filter. Row numbers renumber themselves through a CSS
+    // counter, which skips display:none rows, so nothing to do here for those.
+    var tabs = [].slice.call(document.querySelectorAll('.pb-tab'));
+    var rows = [].slice.call(document.querySelectorAll('.pb-idx-item'));
+    if (tabs.length && rows.length) {
+        tabs.forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var want = btn.getAttribute('data-filter');
-                filters.forEach(function (b) { b.classList.remove('is-on'); });
-                btn.classList.add('is-on');
-                wallItems.forEach(function (li, i) {
+                tabs.forEach(function (b) {
+                    b.classList.toggle('is-on', b === btn);
+                    b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+                });
+                var shown = 0;
+                rows.forEach(function (li) {
                     var show = (want === 'all' || li.getAttribute('data-sector') === want);
                     li.classList.toggle('is-out', !show);
-                    li.classList.remove('is-in-view');
+                    li.classList.remove('is-fresh');
                     if (show) {
-                        // restagger so the surviving tiles animate back in
-                        li.style.animationDelay = Math.min(i, 12) * 22 + 'ms';
+                        li.style.animationDelay = Math.min(shown, 14) * 26 + 'ms';
                         void li.offsetWidth;
-                        li.classList.add('is-in-view');
+                        li.classList.add('is-fresh');
+                        shown++;
                     }
                 });
             });
