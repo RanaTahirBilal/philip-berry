@@ -340,15 +340,70 @@ a{ transition:color .28s var(--pb-ease); }
 .pb-pub h4{ font-size:16.5px; line-height:1.55; margin-bottom:9px; }
 .pb-pub p{ margin:0; font-size:12.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--pb-accent); font-weight:600; }
 
-/* ---------- client roster ---------- */
-.pb-roster{ list-style:none; padding:0; margin:0; column-gap:34px; }
-.pb-roster li{
-  break-inside:avoid; padding:9px 0 9px 20px; position:relative;
-  font-size:15px; border-bottom:1px solid var(--pb-line);
+/* ---------- client wall ----------
+   Real client logos were not used: of the 41 organizations only five have a
+   mark that can be sourced and self hosted, and a wall where five tiles carry
+   a logo and thirty six do not reads as broken. Displaying third party marks
+   also needs each owner's permission. Uniform wordmark tiles instead. */
+.pb-filters{
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+  margin:0 0 38px;
 }
-.pb-roster li::before{ content:""; position:absolute; left:0; top:17px; width:7px; height:1px; background:var(--pb-accent); }
-@media(min-width:768px){ .pb-roster{ column-count:2; } }
-@media(min-width:992px){ .pb-roster{ column-count:3; } }
+.pb-filter{
+  -webkit-appearance:none; appearance:none; cursor:pointer;
+  background:#fff; border:1px solid var(--pb-line); border-radius:40px;
+  padding:10px 20px; font-family:'Montserrat',sans-serif;
+  font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--pb-brand);
+  transition:background .3s var(--pb-ease), color .3s var(--pb-ease),
+             border-color .3s var(--pb-ease), transform .3s var(--pb-ease);
+}
+.pb-filter span{
+  display:inline-block; margin-left:8px; padding:1px 7px; border-radius:20px;
+  background:rgba(14,59,62,.08); font-size:10.5px; color:var(--pb-body);
+  transition:background .3s var(--pb-ease), color .3s var(--pb-ease);
+}
+.pb-filter:hover{ border-color:var(--pb-accent); color:var(--pb-accent); transform:translateY(-2px); }
+.pb-filter.is-on{ background:var(--pb-brand); border-color:var(--pb-brand); color:#fff; }
+.pb-filter.is-on span{ background:rgba(255,255,255,.18); color:#fff; }
+
+.pb-logo-wall{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:14px;
+  grid-template-columns:repeat(auto-fill, minmax(232px, 1fr));
+}
+.pb-logo-item{ display:block; }
+.pb-logo-item.is-out{ display:none; }
+.pb-logo-item.is-in-view .pb-logo-tile{ animation:pbPop .5s var(--pb-ease) both; }
+@keyframes pbPop{ from{ opacity:0; transform:translateY(10px) scale(.98); } to{ opacity:1; transform:none; } }
+
+.pb-logo-tile{
+  display:flex; align-items:center; gap:14px; height:100%;
+  background:#fff; border:1px solid var(--pb-line); border-radius:3px;
+  padding:16px 18px; min-height:74px;
+  transition:box-shadow .4s var(--pb-ease), transform .4s var(--pb-ease),
+             border-color .4s var(--pb-ease);
+}
+.pb-logo-item:hover .pb-logo-tile{
+  transform:translateY(-4px); border-color:rgba(184,135,59,.55);
+  box-shadow:0 14px 32px rgba(14,59,62,.13);
+}
+.pb-mono{
+  flex:0 0 auto; width:42px; height:42px; border-radius:3px;
+  background:var(--pb-brand); color:var(--pb-accent-2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; letter-spacing:.06em;
+  transition:background .4s var(--pb-ease), color .4s var(--pb-ease);
+}
+.pb-logo-item:hover .pb-mono{ background:var(--pb-accent); color:#fff; }
+.pb-org{
+  font-size:14px; font-weight:500; line-height:1.4; color:var(--pb-brand);
+}
+.pb-wall-note{
+  margin:32px 0 0; font-size:12.5px; color:var(--pb-body);
+  text-align:center; opacity:.75;
+}
+.pb-wall-empty{ text-align:center; padding:40px 0; color:var(--pb-body); }
 
 /* ---------- parallax band ---------- */
 .parallax1{
