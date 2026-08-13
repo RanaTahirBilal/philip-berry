@@ -340,70 +340,190 @@ a{ transition:color .28s var(--pb-ease); }
 .pb-pub h4{ font-size:16.5px; line-height:1.55; margin-bottom:9px; }
 .pb-pub p{ margin:0; font-size:12.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--pb-accent); font-weight:600; }
 
-/* ---------- client wall ----------
-   Real client logos were not used: of the 41 organizations only five have a
-   mark that can be sourced and self hosted, and a wall where five tiles carry
-   a logo and thirty six do not reads as broken. Displaying third party marks
-   also needs each owner's permission. Uniform wordmark tiles instead. */
-.pb-filters{
-  display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
-  margin:0 0 38px;
-}
-.pb-filter{
-  -webkit-appearance:none; appearance:none; cursor:pointer;
-  background:#fff; border:1px solid var(--pb-line); border-radius:40px;
-  padding:10px 20px; font-family:'Montserrat',sans-serif;
-  font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--pb-brand);
-  transition:background .3s var(--pb-ease), color .3s var(--pb-ease),
-             border-color .3s var(--pb-ease), transform .3s var(--pb-ease);
-}
-.pb-filter span{
-  display:inline-block; margin-left:8px; padding:1px 7px; border-radius:20px;
-  background:rgba(14,59,62,.08); font-size:10.5px; color:var(--pb-body);
-  transition:background .3s var(--pb-ease), color .3s var(--pb-ease);
-}
-.pb-filter:hover{ border-color:var(--pb-accent); color:var(--pb-accent); transform:translateY(-2px); }
-.pb-filter.is-on{ background:var(--pb-brand); border-color:var(--pb-brand); color:#fff; }
-.pb-filter.is-on span{ background:rgba(255,255,255,.18); color:#fff; }
+/* ---------- client index ----------
+   Real client logos are deliberately not used. Of the 41 organizations only
+   about ten have a logo that can be sourced and self hosted, and several of
+   those resolve to the wrong mark entirely (Comcast returns a defunct
+   "AT&T Comcast" logo, Biomet returns KKR, Colgate returns a product brand).
+   A wall carrying wrong marks would damage credibility rather than build it,
+   so the names are set as typographic wordmarks in an editorial index. */
 
-.pb-logo-wall{
+.pb-index-sec{ background:var(--pb-soft); padding:118px 0 104px; }
+
+/* editorial masthead */
+.pb-index-head{ margin-bottom:56px; align-items:flex-start; }
+.pb-index-eyebrow{
+  font-size:11px; font-weight:600; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--pb-accent); margin:0 0 22px;
+}
+.pb-index-title{
+  font-size:clamp(28px, 3.4vw, 44px); font-weight:300; line-height:1.16;
+  letter-spacing:-.012em; color:var(--pb-brand); margin:0;
+}
+.pb-index-rule{
+  display:block; width:56px; height:1px; background:var(--pb-accent);
+  margin:26px 0 24px;
+}
+.pb-index-lead{
+  font-size:16px; line-height:1.85; color:var(--pb-body);
+  max-width:52ch; margin:0;
+}
+.pb-index-figure{ text-align:right; padding-top:6px; }
+.pb-figure-num{
+  display:block; font-size:clamp(64px, 8vw, 104px); font-weight:200;
+  line-height:.9; letter-spacing:-.04em; color:var(--pb-brand);
+}
+.pb-figure-cap{
+  display:block; margin-top:16px; font-size:11px; font-weight:600;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--pb-body);
+  line-height:1.9;
+}
+
+/* filters as editorial tabs, not pills */
+.pb-index-filters{
+  display:flex; flex-wrap:wrap; gap:6px 34px;
+  border-top:1px solid rgba(14,59,62,.16);
+  border-bottom:1px solid rgba(14,59,62,.16);
+  padding:18px 0; margin:0 0 8px;
+}
+.pb-tab{
+  -webkit-appearance:none; appearance:none; background:none; border:0; padding:6px 0;
+  cursor:pointer; position:relative; font-family:'Montserrat',sans-serif;
+  font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(20,27,28,.48);
+  transition:color .35s var(--pb-ease);
+}
+.pb-tab sup{
+  font-size:9px; font-weight:600; letter-spacing:.04em; margin-left:5px;
+  top:-.7em; color:var(--pb-accent); transition:color .35s var(--pb-ease);
+}
+.pb-tab::after{
+  content:""; position:absolute; left:0; right:0; bottom:-19px; height:1px;
+  background:var(--pb-accent); transform:scaleX(0); transform-origin:left;
+  transition:transform .45s var(--pb-ease);
+}
+.pb-tab:hover{ color:var(--pb-brand); }
+.pb-tab.is-on{ color:var(--pb-brand); }
+.pb-tab.is-on::after{ transform:scaleX(1); }
+
+/* the index itself: a hairline logo directory, no cards */
+.pb-index{
   list-style:none; padding:0; margin:0;
-  display:grid; gap:14px;
-  grid-template-columns:repeat(auto-fill, minmax(232px, 1fr));
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  border-top:1px solid rgba(14,59,62,.14);
+  border-bottom:1px solid rgba(14,59,62,.14);
 }
-.pb-logo-item{ display:block; }
-.pb-logo-item.is-out{ display:none; }
-.pb-logo-item.is-in-view .pb-logo-tile{ animation:pbPop .5s var(--pb-ease) both; }
-@keyframes pbPop{ from{ opacity:0; transform:translateY(10px) scale(.98); } to{ opacity:1; transform:none; } }
+.pb-idx-item{
+  position:relative;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  text-align:center; padding:32px 18px 26px;
+  border-bottom:1px solid rgba(14,59,62,.14);
+  border-right:1px solid rgba(14,59,62,.14);
+  transition:background .45s var(--pb-ease);
+}
+.pb-index > .pb-idx-item:nth-child(4n){ border-right:0; }
+.pb-idx-item.is-out{ display:none; }
+.pb-idx-item:hover{ background:#fff; }
 
-.pb-logo-tile{
-  display:flex; align-items:center; gap:14px; height:100%;
-  background:#fff; border:1px solid var(--pb-line); border-radius:3px;
-  padding:16px 18px; min-height:74px;
-  transition:box-shadow .4s var(--pb-ease), transform .4s var(--pb-ease),
-             border-color .4s var(--pb-ease);
+/* brass bar that draws down the left edge on hover */
+.pb-idx-rule{
+  position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:var(--pb-accent); transform:scaleY(0); transform-origin:top;
+  transition:transform .5s var(--pb-ease);
 }
-.pb-logo-item:hover .pb-logo-tile{
-  transform:translateY(-4px); border-color:rgba(184,135,59,.55);
-  box-shadow:0 14px 32px rgba(14,59,62,.13);
-}
-.pb-mono{
-  flex:0 0 auto; width:42px; height:42px; border-radius:3px;
-  background:var(--pb-brand); color:var(--pb-accent-2);
+.pb-idx-item:hover .pb-idx-rule{ transform:scaleY(1); }
+
+/* the mark: fixed optical box so every logo sits on the same baseline grid */
+.pb-mark{
   display:flex; align-items:center; justify-content:center;
-  font-size:13px; font-weight:700; letter-spacing:.06em;
-  transition:background .4s var(--pb-ease), color .4s var(--pb-ease);
+  width:100%; height:66px; margin-bottom:16px;
 }
-.pb-logo-item:hover .pb-mono{ background:var(--pb-accent); color:#fff; }
-.pb-org{
-  font-size:14px; font-weight:500; line-height:1.4; color:var(--pb-brand);
+/* one self hosted sprite, 5 columns of 260x110 cells, drawn at half size */
+.pb-mark-logo{
+  display:block; width:154px; height:65px;
+  background-image:url("../img/clients.png");
+  background-repeat:no-repeat;
+  background-size:770px 390px;
+  background-position:calc(var(--c) * -154px) calc(var(--r) * -65px);
+  /* logos keep their own brand colours; only a slight lift on hover */
+  transition:transform .5s var(--pb-ease);
 }
-.pb-wall-note{
-  margin:32px 0 0; font-size:12.5px; color:var(--pb-body);
-  text-align:center; opacity:.75;
+.pb-idx-item:hover .pb-mark-logo{ transform:translateY(-3px) scale(1.04); }
+/* organizations with no sourceable mark are set as a wordmark in the same box */
+.pb-mark-type{
+  font-size:18px; font-weight:600; letter-spacing:.05em;
+  color:rgba(20,27,28,.42); line-height:1.25;
+  transition:color .5s var(--pb-ease), transform .5s var(--pb-ease);
 }
-.pb-wall-empty{ text-align:center; padding:40px 0; color:var(--pb-body); }
+.pb-idx-item:hover .pb-mark-type{ color:var(--pb-brand); transform:translateY(-2px); }
+
+.pb-name{
+  display:block; font-size:12.5px; font-weight:500; line-height:1.55;
+  letter-spacing:.02em; color:var(--pb-body);
+  transition:color .4s var(--pb-ease);
+}
+.pb-idx-item:hover .pb-name{ color:var(--pb-brand); }
+.pb-sector{
+  display:block; margin-top:9px;
+  font-size:9px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--pb-accent); opacity:0; transform:translateY(4px);
+  transition:opacity .4s var(--pb-ease), transform .4s var(--pb-ease);
+}
+.pb-idx-item:hover .pb-sector{ opacity:1; transform:none; }
+
+/* restrained stagger when a filter is applied */
+.pb-idx-item.is-fresh{ animation:pbFade .55s var(--pb-ease) both; }
+@keyframes pbFade{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+
+.pb-index-note{
+  margin:34px 0 0; font-size:11.5px; letter-spacing:.04em;
+  color:var(--pb-body); opacity:.66; text-align:center;
+}
+
+@media(max-width:991px){
+  .pb-index-sec{ padding:78px 0 70px; }
+  .pb-index-head{ margin-bottom:44px; }
+  .pb-index-figure{ text-align:left; margin-top:34px; padding-top:0; }
+  .pb-index-sec .main-title, .pb-index-head{ text-align:left; }
+  .pb-index{ grid-template-columns:repeat(3, 1fr); }
+  .pb-index > .pb-idx-item{ border-right:1px solid rgba(14,59,62,.14); }
+  .pb-index > .pb-idx-item:nth-child(3n){ border-right:0; }
+  .pb-index-filters{ gap:6px 26px; }
+}
+
+@media(max-width:575px){
+  .pb-index-sec{ padding:58px 0 54px; }
+  /* the template centres text at this breakpoint; the index reads as a
+     directory, so everything in this section stays left aligned */
+  .pb-index-sec, .pb-index-sec .row > [class*="col-"]{ text-align:left; }
+  .pb-idx-item{ text-align:center; }
+  .pb-index-title{ font-size:26px; }
+  .pb-index-lead{ font-size:15px; }
+  .pb-figure-num{ font-size:62px; }
+  .pb-index-filters{
+    flex-wrap:nowrap; overflow-x:auto; gap:24px; padding:16px 0;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    /* the row scrolls sideways, so fade the right edge to show there is more */
+    -webkit-mask-image:linear-gradient(90deg,#000 82%,transparent 100%);
+            mask-image:linear-gradient(90deg,#000 82%,transparent 100%);
+  }
+  .pb-index-filters::-webkit-scrollbar{ display:none; }
+  .pb-tab{ white-space:nowrap; font-size:10.5px; letter-spacing:.13em; }
+  .pb-tab::after{ bottom:-17px; }
+  .pb-index{ grid-template-columns:1fr; }
+  .pb-index > .pb-idx-item{ border-right:0 !important; }
+  .pb-index{ grid-template-columns:repeat(2, 1fr); }
+  .pb-index > .pb-idx-item{ border-right:1px solid rgba(14,59,62,.14); }
+  .pb-index > .pb-idx-item:nth-child(2n){ border-right:0; }
+  .pb-idx-item{ padding:24px 12px 22px; }
+  .pb-mark{ height:54px; margin-bottom:13px; }
+  .pb-mark-logo{ width:122px; height:52px; background-size:610px 312px;
+    background-position:calc(var(--c) * -122px) calc(var(--r) * -52px); }
+  .pb-mark-type{ font-size:15px; }
+  .pb-name{ font-size:11.5px; }
+  /* touch has no hover, so the sector label stays visible */
+  .pb-sector{ opacity:1; transform:none; margin-top:7px; font-size:8.5px; }
+}
 
 /* ---------- parallax band ---------- */
 .parallax1{
