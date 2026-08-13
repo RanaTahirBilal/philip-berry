@@ -52,6 +52,30 @@
     window.addEventListener('load', sweep);
     setTimeout(sweep, 1200);
 
+    // Client wall filter.
+    var filters = [].slice.call(document.querySelectorAll('.pb-filter'));
+    var wallItems = [].slice.call(document.querySelectorAll('.pb-logo-item'));
+    if (filters.length && wallItems.length) {
+        filters.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var want = btn.getAttribute('data-filter');
+                filters.forEach(function (b) { b.classList.remove('is-on'); });
+                btn.classList.add('is-on');
+                wallItems.forEach(function (li, i) {
+                    var show = (want === 'all' || li.getAttribute('data-sector') === want);
+                    li.classList.toggle('is-out', !show);
+                    li.classList.remove('is-in-view');
+                    if (show) {
+                        // restagger so the surviving tiles animate back in
+                        li.style.animationDelay = Math.min(i, 12) * 22 + 'ms';
+                        void li.offsetWidth;
+                        li.classList.add('is-in-view');
+                    }
+                });
+            });
+        });
+    }
+
     // Back to top button: fade in past the first screen.
     var top = document.querySelector('.go-top');
     if (top) {
